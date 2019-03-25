@@ -12,6 +12,13 @@
 \usepackage{listings}
 \definecolor{gray92}{gray}{0.92}
 \definecolor{black85}{rgb}{0.28,0.28,0.28}
+\hypersetup{
+  colorlinks   = true,
+  urlcolor     = blue, 
+  linkcolor    = black, 
+  citecolor   = red 
+}
+
 
 
 
@@ -89,35 +96,74 @@ El presente artículo expone el procedimiento a seguir para realizar un ataque \
 
 
 
-\chapter{Principales trabajos previos}
-Mirar algunos de las referencias.
+\chapter{Trabajos previos}
 
-El algoritmo de k-means.
-\chapter{Principales trabajos posteriores}
+\section*{When the Droid became the Bot}
+
+Uno de los grandes problemas de la seguridad en la actualidad ha sido el desarrollo de \emph{botnets}. El \emph{botmaster} despliega el código malicioso a diferentes \emph{hosts} vulnerables. Cuando el sistema ha sido infectado, el dispositivo pasa a formar parte de la \emph{botnet}, comienza a buscar nuevos dispositivos vulnerables y a realizar otras prácticas ilegales.
+
+Las actividades delictivas más habituales que realizan las \emph{botnets} son ataques de \emph{spam} y ataques de denegación de servicio (DDoS). En los últimos años, el uso de \emph{smartphones} ha crecido de manera exponencial, por ello, los criminales deciden infectar estos dispositivos para realizar los ataques expuestos anteriormente.
+
+Con la aparición de la tercera generación de redes móviles (3G), los \emph{smartphones} empiezan a conectarse a Internet, con las ventajas y desventajas que implica. Si el dispositivo resulta infectado, el \emph{botmaster} tiene la capacidad de ejecutar diferentes acciones sobre sus esclavos, como pueden ser el envío de SMS, instalar y borrar aplicaciones, realizar llamadas \ldots Aprovechando esta funcionalidad, algunos de los ataques más habituales que ejecutan las \emph{botnets} son los siguientes:
+
+\begin{description}
+\item[\emph{Spyware.}] Este tipo de ataques se utiliza para recoger datos personales (nombres, direcciones, datos bancarios \ldots) del atacado. Esto se consigue con la lectura de mensajes, monitorizando la posición del dispositivo, analizando la actividad en Internet y escuchando conversaciones telefónicas.
+\item[DDoS.] Ataques de denegación de servicio contra \emph{call centers} o diferentes webs.
+\item[Ataques al núcleo de la red.] Se realizan ataques de \emph{flooding} a la red celular durante fechas importantes del año, como año nuevo, para colapsar el sistema. Se produce un cuello de botella en el HLR (\emph{Home location register}), que es la base de datos que contiene cada teléfono móvil de la red GSM, hasta forzar su fallo.
+\end{description}
+
+En el entorno de pruebas, se han utilizado tres dispositivos \emph{rooteados}, el \emph{botmaster}, la víctima de spam y el dispositivo infectado. El objetivo de la investigación es detectar al \emph{botmaster} analizando los SMS que recibe la víctima.
+
+Se ha analizado el dispositivo afectado, mirando su tarjeta SIM, el almacenamiento interno y su tarjeta SD y no se han encontrado los mensajes de \emph{spam} recibidos. Esto se debe a que el \emph{malware} se ejecuta en las capas intermedias del dispositivo, en vez de en espacio de usuario, véase \ref{botLayer}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[scale=0.8]{previo1}
+\includegraphics[scale=0.9]{previo2}
+\caption{\emph{Bot layer}}
+\label{botLayer}
+\end{center}
+\end{figure}
+
+\section*{Andbot: Towards Advanced Mobile Botnets}
+
+Andbot es una \emph{botnet} avanzada que se ejecuta en dispositivos \emph{Android}. Sus características principales son las siguientes:
+
+\begin{description}
+\item[Sigilosa.] Utiliza el protocolo HTTP, solo tiene acceso a Internet en segundo plano.
+\item[Robusta.] Resistente a la mayoría de técnicas de defensa (sumidero DNS, inyección de comandos, lista negra de IPs \ldots).
+\item[Barata.] Bajo coste, bajo uso de datos y bajo gasto energético.
+\item[Soporte para comandos.] \emph{Phishing} y filtrado, DDoS, robo de información, apagado y control de llamadas.
+\end{description}
+
+La parte más importante de una \emph{botnet} es el C\&{}C (\emph{Command and controle design}). Para autenticar comandos, Andbot utiliza el algoritmo RSA. Para enviar comandos a los dispositivos infectados, el \emph{botmaster} genera una imagen JPG en la que se incluye el comando encriptado y firmado, seguidamente se sube a un blog y se comprime la URL. Por otro lado, combina la nueva URL con la fecha de inicio y de expiración del comando. Finalmente, el dispositivo infectado descarga la imagen JPG, descifra el comando y lo ejecuta.
+
+Las pruebas se han realizado en cuatros dispositivos \emph{Android} y se ha incluido el código malicioso dentro de un conocido juego. La primera vez que se ejecuta el juego, Andbot comienza ha realizar sus funciones en segundo plano. Después de reiniciar, el juego se inicia de forma automática y el código se ejecuta siempre que el dispositivo se encuentre en reposo.
+
+Para hacer frente a esta Andbot se recomienda utilizar las técnicas defensivas habituales contra \emph{botnet}, como construir mecanismos de detección coordinados, realizar análisis en busca de comandos que utilicen las vulnerabilidades del sistema y ejecutar por primera vez el código en \emph{sandboxes}.
+
+\section*{A K-Means Clustering Algorithm}
+
+El algoritmo K-means \cite{k-means} fue descrito por Hartigan en 1975. Este algoritmo tiene como objetivo dividir un conjunto $MxN$ en $K$ clusters. No se realiza la suma de los cuadrados de todas las particiones, excepto cuando $M$ y $N$ toman valores pequeños y $K=2$. Para el caso general, se busca una solución óptima local que requiera mover un punto de un cluster a otro para evitar la suma de cuadrados.
+
+Este algoritmo necesita una serie parámetros de entrada para poder ejecutar correctamente, son los siguientes:
+
+\begin{enumerate}
+\item Matriz de entrada de $M$ puntos por $N$ dimensiones.
+\item Matriz inicial de $K$ centroides por $N$ dimensiones.
+\end{enumerate}
+
+
+\chapter{Trabajos posteriores}
+
 
 \chapter{Revisión crítica del artículo}
 
 \chapter{Conclusiones}
 
 
-
-\begin{thebibliography}{X}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\end{thebibliography}
+\bibliography{Bibliografia}
+\bibliographystyle{ieeetr}
 
 
 \chapter*{Información básica del autor}

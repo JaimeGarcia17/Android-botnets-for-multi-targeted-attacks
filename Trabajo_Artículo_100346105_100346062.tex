@@ -156,6 +156,26 @@ Este algoritmo necesita una serie parámetros de entrada para poder ejecutar cor
 
 \chapter{Trabajos posteriores}
 
+En los años siguientes al artículo original, se han realizado multitud de trabajos similares, ya que, el sistema operativo \emph{Android} es cada vez más popular y tiene mayor cuota de mercado. A continuación, se resumen algunos de estos.
+
+\section*{Android botnet detection: An integrated source code mining approach}
+
+Este artículo propone diferentes técnicas para detectar las \emph{botnets} en \emph{Android} \cite{posterior1}. Para ello, se aplica ingeniería inversa. Se utiliza la herramienta \emph{dex2jar}, utilizada en el Módulo II, que convierte los ficheros descomprimidos .dex a .jar. Seguidamente, se utiliza la herramienta \emph{JD-GUI} para poder analizar el código fuente del .jar.
+
+Para averiguar si la aplicación contiene código malicioso, se utilizan diferentes modelos predictivos de \emph{machine learning}. Se utilizan técnicas de minería de datos para analizar el código, se realizan estadísticas de las clases analizadas y se buscan palabras clave en el código (\emph{lock}, \emph{concurrent}, etc.). Algunos de los algoritmos que se utilizan en el estudio son:
+
+\begin{itemize}
+\item NaiveBayes.
+\item K-NN.
+\item J48.
+\item RandomForest.
+\item SMO.
+\end{itemize}
+
+Todos los algoritmos tienen un porcentaje de precisión superior al 80 \%{}. Sin embargo, se puede comprobar que el algoritmo que mejor se comporta para detectar código malicioso es el algoritmo K-NN. Los algoritmos se deben entrenar con las nuevas técnicas que implementen las \emph{botnets} para realizar modelos predictivos adecuados.
+
+\section*{Investigation into Google Play security mechanisms via experimental botnet}
+
 
 \chapter{Revisión crítica del artículo}
 

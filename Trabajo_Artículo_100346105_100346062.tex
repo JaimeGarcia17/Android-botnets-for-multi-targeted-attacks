@@ -19,7 +19,8 @@
   citecolor   = red 
 }
 
-
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
 
 
 
@@ -72,7 +73,25 @@ Grupo: \textbf{81.}\\
 \setcounter{page}{1}
 \pagestyle{fancy}
 
-El presente artículo expone el procedimiento a seguir para realizar un ataque \emph{botnet} eficiente sobre diferentes dispositivos móviles \emph{Android} al mismo tiempo para capturar información. El desarrollo del artículo se debe a que cada vez se está realizando un mayor número de ataques \emph{botnets} a dispositivos móviles, debido a que estos tienen muchos sensores que son atractivos para los atacantes y a los que se puede acceder de manera sencilla a través de las aplicaciones. El principal objetivo del artículo es exponer el potencial que tiene este tipo de ataques y el peligro que puede suponer, puesto que puede ser aplicado para erradicar organizaciones criminales pero también puede ser usado por ciberdelincuentes. En el artículo se va mostrando un ejemplo de ataque \emph{botnet} para mostrar la localización de diferentes dispositivos móviles.
+
+%% Descripción de tareas
+
+A continuación, se detallan las tareas realizadas por cada uno de los integrantes del grupo.
+
+\section*{Jaime}
+
+\begin{description}
+\item[Trabajos previos.] Lectura de trabajos previos obtenidos de la bibliografía del artículo. Redacción del Capítulo \ref{tPrevios}.
+\item[Trabajos posteriores.] Búsqueda y lectura de trabajos posteriores. Redacción del Capítulo \ref{tPosteriores}.
+\item[Conclusiones.] Redacción del Capítulo \ref{conclusiones}.
+\item[Planificación.] Realización del diagrama de Gantt de la sección \ref{planificacion} con la herramienta \emph{pgfgantt}.
+\item[Glosario.] Búsqueda de términos importantes del documento y redacción del Capítulo \ref{glosario}.
+\item[Bibliografía.] Realización de la bibliografía del documento con la herramienta Bib\LaTeX.
+\end{description}
+
+\section*{Adán}
+
+%El presente artículo expone el procedimiento a seguir para realizar un ataque \emph{botnet} eficiente sobre diferentes dispositivos móviles \emph{Android} al mismo tiempo para capturar información. El desarrollo del artículo se debe a que cada vez se está realizando un mayor número de ataques \emph{botnets} a dispositivos móviles, debido a que estos tienen muchos sensores que son atractivos para los atacantes y a los que se puede acceder de manera sencilla a través de las aplicaciones. El principal objetivo del artículo es exponer el potencial que tiene este tipo de ataques y el peligro que puede suponer, puesto que puede ser aplicado para erradicar organizaciones criminales pero también puede ser usado por ciberdelincuentes. En el artículo se va mostrando un ejemplo de ataque \emph{botnet} para mostrar la localización de diferentes dispositivos móviles.
 
 
 
@@ -96,9 +115,9 @@ El presente artículo expone el procedimiento a seguir para realizar un ataque \
 
 
 
-\chapter{Trabajos previos}
+\chapter{Trabajos previos} \label{tPrevios}
 
-\section*{When the Droid became the Bot}
+\section{When the Droid became the Bot}
 
 Uno de los grandes problemas de la seguridad en la actualidad ha sido el desarrollo de \emph{botnets}. El \emph{botmaster} despliega el código malicioso a diferentes \emph{hosts} vulnerables. Cuando el sistema ha sido infectado, el dispositivo pasa a formar parte de la \emph{botnet}, comienza a buscar nuevos dispositivos vulnerables y a realizar otras prácticas ilegales.
 
@@ -125,7 +144,7 @@ Se ha analizado el dispositivo afectado, mirando su tarjeta SIM, el almacenamien
 \end{center}
 \end{figure}
 
-\section*{Andbot: Towards Advanced Mobile Botnets}
+\section{Andbot: Towards Advanced Mobile Botnets}
 
 Andbot es una \emph{botnet} avanzada que se ejecuta en dispositivos \emph{Android}. Sus características principales son las siguientes:
 
@@ -142,7 +161,7 @@ Las pruebas se han realizado en cuatros dispositivos \emph{Android} y se ha incl
 
 Para hacer frente a esta Andbot se recomienda utilizar las técnicas defensivas habituales contra \emph{botnet}, como construir mecanismos de detección coordinados, realizar análisis en busca de comandos que utilicen las vulnerabilidades del sistema y ejecutar por primera vez el código en \emph{sandboxes}.
 
-\section*{A K-Means Clustering Algorithm}
+\section{A K-Means Clustering Algorithm}
 
 El algoritmo K-means \cite{k-means} fue descrito por Hartigan en 1975. Este algoritmo tiene como objetivo dividir un conjunto $MxN$ en $K$ clusters. No se realiza la suma de los cuadrados de todas las particiones, excepto cuando $M$ y $N$ toman valores pequeños y $K=2$. Para el caso general, se busca una solución óptima local que requiera mover un punto de un cluster a otro para evitar la suma de cuadrados.
 
@@ -154,11 +173,11 @@ Este algoritmo necesita una serie parámetros de entrada para poder ejecutar cor
 \end{enumerate}
 
 
-\chapter{Trabajos posteriores}
+\chapter{Trabajos posteriores} \label{tPosteriores}
 
 En los años siguientes al artículo original, se han realizado multitud de trabajos similares, ya que, el sistema operativo \emph{Android} es cada vez más popular y tiene mayor cuota de mercado. A continuación, se resumen algunos de estos.
 
-\section*{Android botnet detection: An integrated source code mining approach}
+\section{Android botnet detection: An integrated source code mining approach}
 
 Este artículo propone diferentes técnicas para detectar las \emph{botnets} en \emph{Android} \cite{posterior1}. Para ello, se aplica ingeniería inversa. Se utiliza la herramienta \emph{dex2jar}, utilizada en el Módulo II, que convierte los ficheros descomprimidos .dex a .jar. Seguidamente, se utiliza la herramienta \emph{JD-GUI} para poder analizar el código fuente del .jar.
 
@@ -174,7 +193,16 @@ Para averiguar si la aplicación contiene código malicioso, se utilizan diferen
 
 Todos los algoritmos tienen un porcentaje de precisión superior al 80 \%{}. Sin embargo, se puede comprobar que el algoritmo que mejor se comporta para detectar código malicioso es el algoritmo K-NN. Los algoritmos se deben entrenar con las nuevas técnicas que implementen las \emph{botnets} para realizar modelos predictivos adecuados.
 
-\section*{Investigation into Google Play security mechanisms via experimental botnet}
+\section{Investigation into Google Play security mechanisms via experimental botnet}
+
+En este artículo \cite{posterior2}, se introduce código malicioso para que el dispositivo \emph{Android} forme parte de una \emph{botnet} y se comprueban los mecanismos de seguridad que utiliza \emph{Google Play} para publicar aplicaciones.
+
+Se introducen dos componentes en la aplicación, a priori inofensivos, pero que en realidad es el código malicioso de la \emph{botnet}. Se piden los permisos típicos (\emph{GPS}, Internet \ldots) al usuario cuando hace uso de la aplicación, pero, en realidad se utilizan para recopilar información.
+
+El dispositivo infectado recibe un \emph{JSON} del \emph{C\&{}C} en el que se incluyen datos meteorológicos y variables que son utilizadas para configurar y realizar ataques. Se utiliza el algoritmo \emph{SHA-256} para comprobar que las variables de los componentes son iguales que las que recibe del \emph{JSON}.
+
+La aplicación se puede publicar en \emph{Google Play} sin ningún problema, ya que, no se detecta código malicioso. Esto se debe a que la aplicación se conecta con el \emph{C\&{}C} cuando recibe el \emph{JSON}, en la llamada \emph{onCreate()}. Se protegen los componentes maliciosos con cifrado \emph{SHA-256} para evitar que se manipulen.
+
 
 
 \chapter{Revisión crítica del artículo}
@@ -188,27 +216,99 @@ A pesar de que siempre que pensamos en ataques cibernéticos (en este caso de un
 Además, a pesar de ser un artículo publicado hace 4 años, este tipo de ataques se siguen dando en la actualidad. Cada vez hay más teléfonos móviles funcionando en el mundo, por lo tanto hay más posibilidades de infectar dispositivos a través de este método y robar información del mismo. Es por ello, por lo que nos ha parecido un artículo interesante, el hecho de que a pesar del paso del tiempo (unos pocos años en materia de seguridad informática es un mundo) sigue siendo actual y aplicable en estos días.
 
 
-\chapter{Conclusiones}
+\chapter{Conclusiones} \label{conclusiones}
 
 
 \bibliography{Bibliografia}
 \bibliographystyle{ieeetr}
 
 
-\chapter*{Información básica del autor}
+\chapter{Información complementaria}
+\section{Información básica del autor}
 El autor de este artículo es Valentin Hamon. En el momento en el que escribió el artículo era estudiante e investigador del laboratorio de criptologia operacional y virología en ESIEA (\emph{École supérieure d'informatique, électronique, automatique}. Está graduado como Ingeniero de Seguridad Informática de Sistemas por la ESIEA. Actualmente trabaja en FAMOCO, empresa que ha ha desarrollado la primera solución transaccional Android del mundo para ayudar a las empresas a alcanzar sus objetivos de transformación digital.
 
 Además de este artículo, anteriormente publicó otro titulado: \emph{Malicious URI Resolving in PDFs}, cuyo propósito es mostrar que el simple uso de una petición HTTP desde un PDF puede ser una buena herramienta  para un atacante. Además, este documento trata sobre cómo puede ser relativamente fácil reutilizar algunas vulnerabilidades ajenas al documento. 
 
-\chapter*{Información básica de la revista}
+\section{Información básica de la revista}
 
 El artículo fue publicado en la revista \emph{Springer-Verlag}. \emph{Springer-Verlag} es la filial francesa de \emph{Springer}, fundada en 1986. Su sede se encuentra en París. Los temas tratados en sus publicaciones son del ámbito de la medicina, las matemáticas, la estadística, la informática y la ingeniería. Además de la publicación de revistas de carácter científico, \emph{Springer-Verlag} se dedica a la publicación de libros del ámbito de las ciencias y a comercializar la editorial Springer en Francia. 
 
 
-\chapter*{Planificación del trabajo realizado}
+\section{Planificación} \label{planificacion}
 
+En la siguiente página se muestra la planificación temporal del proyecto realizado, para ello, se ha utilizado un diagrama de Gantt.
 
-\chapter*{Glosario}
+\thispagestyle{plain}
+\begin{landscape}
+  \vspace*{\stretch{1}}
+  \resizebox{!}{.76\textheight}{
+  \begin{ganttchart}[
+  x unit= 25 mm,
+  hgrid=true,
+  time slot format={little-endian}
+  ]{21.03.2019}{31.03.2019} 
+  
+	\gantttitlecalendar{month=name,day} \\
+	
+	\ganttmilestone{Inicio del proyecto}{21.03.2019}\\ 
+  
+	% Lectura y resumen de nuestro artículo
+	\ganttgroup{Estudio del artículo}{22.03.2019}{25.03.2019} \\
+	\ganttbar{Lectura}{22.03.2019}{23.03.2019}\\
+	\ganttbar{Resumen}{23.03.2019}{25.03.2019} \\
+	
+	\ganttgroup{Trabajos previos y posteriores}{24.03.2019}{26.03.2019} \\
+	\ganttbar{Lectura}{24.03.2019}{25.03.2019}\\
+	\ganttbar{Resumen}{25.03.2019}{26.03.2019} \\
+ 
+	\ganttgroup{Crítica y conclusión}{27.03.2019}{28.03.2019} \\
+	\ganttbar{Revisión crítica}{27.03.2019}{28.03.2019}\\
+	\ganttbar{Conclusiones}{28.03.2019}{28.03.2019} \\
+	
+	\ganttgroup{Preparación del documento}{29.03.2019}{31.03.2019} \\
+	\ganttbar{Revisión}{29.03.2019}{29.03.2019}\\
+	\ganttbar{Maquetado}{29.03.2019}{31.03.2019} \\
+	
+	\ganttmilestone{Entrega del proyecto}{31.03.2019}\\ 
+	
+	\ganttlink{elem0}{elem1}
+	\ganttlink{elem2}{elem3}
+	\ganttlink{elem5}{elem6}
+	\ganttlink{elem3}{elem8}
+	\ganttlink{elem3}{elem9}	
+	\ganttlink{elem6}{elem9}
+	\ganttlink{elem9}{elem11}
+	\ganttlink{elem11}{elem12}
+	\ganttlink{elem12}{elem13}
+	
+  \end{ganttchart}
+  }
+  \vspace*{\stretch{1}}
+\end{landscape}
+
+\appendix
+\chapter*{Glosario} \label{glosario}
+
+\begin{description}
+\item[Android.] Sistema operativo para dispositivos móviles desarrollado por Google, basado en el kernel de Linux y de código abierto.
+\item[API.] Application Programming Interface, conjunto de funciones que ofrece cierta biblioteca para ser utilizado por otro software como capa de abstracción.
+\item[Botmaster.]  Individuo o sistema responsable del control de bots.
+\item[Botnet.] Conjunto de \emph{bots} que se ejecutan de manera autónoma. El creador de la \emph{botnet} puede controlar los dispositivos infectados de manera remota.
+\item[C\&{}C.] Command and Controle, software de control y comandos que utiliza el botmaster para controlar la red.
+\item[DDoS.] Distributed Denial of Service, ataque de denegación de servicio que realiza múltiples peticiones hacia un único destino.
+\item[GSM.] Global System for Mobile, sistema estándar y libre de telefonía digital.
+\item[HLR.] Home Location Register, base de datos que contiene todos los dispositivos registrados en la red GSM.
+\item[IMEI.] International Mobile Equipment Identity, código pregrabado en los móviles GSM que lo identifican unívocamente.
+\item[JSON.] JavaScript Object Notation, es un formato de texto sencillo para el intercambio de datos. 
+\item[Machine learning.] Subcampo de las ciencias de la computación y una rama de la inteligencia artificial, cuyo objetivo es desarrollar técnicas que permitan que las computadoras aprendan. 
+\item[Phishing.] Proceso de ingeniería social que se utiliza para conseguir datos de usuarios de manera fraudulenta.
+\item[Root.] Proceso que permite al usuario tener privilegios elevados (superusuario) para sobrepasar las limitaciones que impone el fabricante de hardware y software.
+\item[RSA.] Sistema criptográfico de clave pública.
+\item[Sandbox.] Aislamiento de procesos, es un mecanismo para ejecutar programas con seguridad y de manera separada.
+\item[SHA-256.] Secure Hash Algorithm - 256, función hash de cifrado.
+\item[SIM.] Subscriber Identity Module, almacena la clave de servicio del suscriptor usada para identificarse ante la red.
+\end{description}
+
 
 \end{document}
 

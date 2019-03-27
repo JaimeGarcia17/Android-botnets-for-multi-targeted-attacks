@@ -53,11 +53,11 @@ Seguridad en dispositivos móviles \\
 
 \vfill
 \begin{center}
-Autores:\\
-\textbf{Adán Cano Moreno. NIA: 100346105.}\\
-\textbf{Jaime García González. NIA: 100346062.}\\
+\textbf{Autores:}\\
+Adán Cano Moreno - 100346105\\
+Jaime García González - 100346062\\
 \vspace*{0.2in}
-Grupo: \textbf{81.}\\
+\textbf{Grupo:} 81\\
 \vspace*{1in}
 \today
 \end{center}
@@ -91,25 +91,33 @@ A continuación, se detallan las tareas realizadas por cada uno de los integrant
 
 \section*{Adán}
 
-%El presente artículo expone el procedimiento a seguir para realizar un ataque \emph{botnet} eficiente sobre diferentes dispositivos móviles \emph{Android} al mismo tiempo para capturar información. El desarrollo del artículo se debe a que cada vez se está realizando un mayor número de ataques \emph{botnets} a dispositivos móviles, debido a que estos tienen muchos sensores que son atractivos para los atacantes y a los que se puede acceder de manera sencilla a través de las aplicaciones. El principal objetivo del artículo es exponer el potencial que tiene este tipo de ataques y el peligro que puede suponer, puesto que puede ser aplicado para erradicar organizaciones criminales pero también puede ser usado por ciberdelincuentes. En el artículo se va mostrando un ejemplo de ataque \emph{botnet} para mostrar la localización de diferentes dispositivos móviles.
+\begin{description}
+\item[Introducción.] Tras la lectura del artículo, descripción breve del contenido del mismo de manera objetiva. Redacción del Capítulo \ref{Introduccion}
+\item[Revisión crítica del artículo.] Opinión subjetiva del contenido del artículo, indicando tanto sus puntos fuertes como los débiles. Redacción del Capítulo \ref{Critica}
+\item[Información básica del autor.] Búsqueda de información respecto al autor del artículo y redacción de la Sección \ref{autor}. 
+\item[Información básica de la revista.] Búsqueda de información respecto a la revista donde se publicó el  artículo y redacción de la Sección \ref{revista}. 
+\item[Bibliografía.] Realización de la bibliografía del documento con la herramienta Bib\LaTeX.
+\end{description}
 
 
 
 
-\chapter{Introducción}
+\chapter{Introducción}\label{Introduccion}
 
- Un \emph{botnet} se compone de dos partes: el cliente (que es a quien se ataca) y el servidor (que es quien realiza el ataque y quien recoge los datos). Al comienzo del artículo se muestra una breve introducción a los ataques a múltiples objetivos y la el por qué de realizarlo sobre dispositivos móviles. A continuación muestra una implementación del ataque donde se generan varias fases: 
+El presente artículo expone el procedimiento a seguir para realizar un ataque \emph{botnet} eficiente sobre diferentes dispositivos móviles \emph{Android} al mismo tiempo para capturar información. El desarrollo del artículo se debe a que cada vez se está realizando un mayor número de ataques \emph{botnets} a dispositivos móviles, debido a que estos tienen muchos sensores que son atractivos para los atacantes y a los que se puede acceder de manera sencilla a través de las aplicaciones. El principal objetivo del artículo es exponer el potencial que tiene este tipo de ataques y el peligro que puede suponer, puesto que puede ser aplicado para erradicar organizaciones criminales pero también puede ser usado por ciberdelincuentes. En el artículo se va mostrando un ejemplo de ataque \emph{botnet} para mostrar la localización de diferentes dispositivos móviles, describiendo cada fase que hay que realizar. Las fases son las siguientes:
+
+ 
 
 \begin{description}
-\item [Recoger información]: Como se puede recoger información de un dispositivo a través de la aplicaión \emph{Android}, que es el cliente del \emph{botnet}. En esta fase se muestra un ejemplo de una modificación del código de una aplicación para poder leer datos del dispositivo a través de la geolocalización.
+\item [Recoger información]: Como se puede recoger información de un dispositivo a través de una aplicaión \emph{Android}.
 
-\item [Almacenamiento y gestión de la información]: En esta fase se describe el procedimiento a seguir para almacenar la información que ha sido recogida a través del ataque. Para ello se puede usar tanto \emph{PHP} como \emph{MySQL} ya que ambos están instalados en la mayoría de los servidores de internet. En el artículo se indica que para almacenar la información de cada dispositivo lo mejor es crear una tabla por dispositivo cuya clave indentificativa sea el número \emph{IMEI}, ya que es un número único e identificativo para cada dispositivo.
+\item [Almacenamiento y gestión de la información]: En esta fase se describe el procedimiento a seguir para almacenar la información que ha sido recogida a través del ataque. 
 
-\item [Mostrar la información]: En este fase se describe brevemente como poder mostrar en un página la información que ha sido recogida. Para ello se necesita generar código dinámico a través de \emph{Javascript} incrustado en código \emph{PHP}. Para acceder a los datos almacenados se hace una consulta a la base de datos a través de el comando SELECT a la base de datos del dispositivo del que queramos recuperar sus datos. Todos los nombres de las tablas son almacenados en un array para poder hacer las consultas a la base de datos. Para mostar la información en una web, se incluye la cabecera de \emph{HTML} de una página web para inicializar la \emph{API} de \emph{Google Maps} y a través de \emph{PHP} podemos mostrar diferentes iconos por cada \emph{botnet} en la página web y así poder diferenciar la información.
+\item [Mostrar la información]: En este fase se describe brevemente como poder mostrar en una página la información que ha sido recogida. 
 
-\item [Información de verificación]: En objetivo de esta fase es conocer el comportamiento de los usuarios que están siendo atacados por un \emph{botnet}. Se desea conocer si un persona infectada viaja en autobús, en tren o simplemente camina o está parado. Para ello se debe determinar la velocidad de movimiento del infectado. Por lo tanto, el problema de este ataque es conseguir suficiente información como para poder determinar el comportamiento de la persona a la que se ataca. Lo primero que se debe hacer es crear una nueva tabla donde, por cada instante de tiempo, realizar una verificación de la información capturada de diferentes dispositivos. Esto nos va a facilitar el proceso de gestión de los datos de diferentes objetivos a la vez. Cuando queramos consultar la información de verificación debemos indicar que queremos mostrar la información de manera ordenada en función del instante de tiempo para poder analizar la información de manera eficiente.
+\item [Información de verificación]: El objetivo de esta fase es conocer el comportamiento de los usuarios que están siendo atacados por un \emph{botnet}. 
 
-\item [Determinar puntos de encuentro entre dispositivos]: En esta fase se describe el proceso para poder determinar el momento en el cual dos dispositivos pueden estar en mismo lugar. Para ello se hace uso del algoritmo de \emph{k-means}. En artículo se muestra un ejemplo de implementación del algoritmo donde lo primero que se hace es seleccionar la información de los dispositivos que se desean analizar y almacenarlo en un cluster. El algoritmo \emph{k-means} puede ser aplicado de manera recursiva mientras los clusters no cumplan con las especificaciones deseadas. Si cumplen con los requisitos la primera vez basta con aplicarlo en una sola ocasión. El algoritmo es desarrollado en \emph{PHP} y necesita implementar una función que compruebe que el cluster cumple con los requisitos especificados. Los clusters seleccionados son concatenados en un array único para poder determinar de una manera más sencilla los puntos de encuentro. En la implementación mostrada en el artículo, los centroides iniciales son calculados de manera aleatoria dentro del rango de los máximos y mínimos de longitud y latitud observados en los datos. Se calculan a través de este método para asegurar buenos resultados. Los demás centroides son calculados a través de una ecuación de distancias de puntos sobre una esfera a partir de sus longitudes y latitudes. Antes de calcular los nuevos centroides se transforman los puntos de longitud y latitud al eje cartesiano. En cada iteración del algoritmo se calcula el cluster a partir de los puntos donde cada distancia entre los puntos calculados es menor a la distancia máxima. El atacante decide cuando dos víctimas están cercanas en función de un radio de distancia. Para cada cluster se selecciona los posibles puntos de encuentro en función del tiempo y la distacia. Esta es la razón por la cual almacenamos la información de verificación en función del instante de tiempo. De esta manera podemos analizar las zonas donde hay posibilidades de que sean puntos de encuentro. Si no hay ningún resultado viable, significa que los datos capturados no nos permiten determinar un punto de encuentro.
+\item [Determinar puntos de encuentro entre dispositivos]: En esta fase se describe el proceso para poder determinar el momento en el cual dos dispositivos pueden estar en mismo lugar. 
 
 \end{description}
 
@@ -205,7 +213,7 @@ La aplicación se puede publicar en \emph{Google Play} sin ningún problema, ya 
 
 
 
-\chapter{Revisión crítica del artículo}
+\chapter{Revisión crítica del artículo}\label{Critica}
 
 La lectura de este artículo nos ha resultado bastante interesante y útil, ya que trata de un tema tan importante como la seguridad en nuestros dispositivos. Como se ha mencionado en el artículo, cada vez se hace un mayor uso de los \emph{smartphones} y esto hace que los atacantes se sientan atraídos e intenten infectar nuestros dispositivos. Que en un artículo se mencione un procedimiento a través del cual se puede infectar un dispositivo y captar información del mismo hace que el lector se sienta identificado y preste atención al contenido del mismo. Además, pese a que incluye bastante porciones de código (lo cuál le hace ser aún más técnico), la mayor parte lectura se nos ha hecho amena y fácil de entender. La estructura del artículo es bastante buena donde, tras una breve introducción al mismo, en cada apartado se explica una de las fases del ataque. Esto hace que el lector no pierda en ningún momento la referencia de en que fase del ataque se encuentra. 
 
@@ -224,14 +232,14 @@ Además, a pesar de ser un artículo publicado hace 4 años, este tipo de ataque
 
 
 \chapter{Información complementaria}
-\section{Información básica del autor}
-El autor de este artículo es Valentin Hamon. En el momento en el que escribió el artículo era estudiante e investigador del laboratorio de criptologia operacional y virología en ESIEA (\emph{École supérieure d'informatique, électronique, automatique}. Está graduado como Ingeniero de Seguridad Informática de Sistemas por la ESIEA. Actualmente trabaja en FAMOCO, empresa que ha ha desarrollado la primera solución transaccional Android del mundo para ayudar a las empresas a alcanzar sus objetivos de transformación digital.
+\section{Información básica del autor}\label{autor}
+El autor de este artículo es Valentin Hamon\cite{Autor}. En el momento en el que escribió el artículo era estudiante e investigador del laboratorio de criptologia operacional y virología en ESIEA\cite{ESIEA} (\emph{École supérieure d'informatique, électronique, automatique}. Está graduado como Ingeniero de Seguridad Informática de Sistemas por la ESIEA. Actualmente trabaja en FAMOCO, empresa que ha ha desarrollado la primera solución transaccional Android del mundo para ayudar a las empresas a alcanzar sus objetivos de transformación digital.
 
 Además de este artículo, anteriormente publicó otro titulado: \emph{Malicious URI Resolving in PDFs}, cuyo propósito es mostrar que el simple uso de una petición HTTP desde un PDF puede ser una buena herramienta  para un atacante. Además, este documento trata sobre cómo puede ser relativamente fácil reutilizar algunas vulnerabilidades ajenas al documento. 
 
-\section{Información básica de la revista}
+\section{Información básica de la revista}\label{revista}
 
-El artículo fue publicado en la revista \emph{Springer-Verlag}. \emph{Springer-Verlag} es la filial francesa de \emph{Springer}, fundada en 1986. Su sede se encuentra en París. Los temas tratados en sus publicaciones son del ámbito de la medicina, las matemáticas, la estadística, la informática y la ingeniería. Además de la publicación de revistas de carácter científico, \emph{Springer-Verlag} se dedica a la publicación de libros del ámbito de las ciencias y a comercializar la editorial Springer en Francia. 
+El artículo fue publicado en la revista \emph{Springer-Verlag}\cite{Springer-Verlag}. \emph{Springer-Verlag} es la filial francesa de \emph{Springer}, fundada en 1986. Su sede se encuentra en París. Los temas tratados en sus publicaciones son del ámbito de la medicina, las matemáticas, la estadística, la informática y la ingeniería. Además de la publicación de revistas de carácter científico, \emph{Springer-Verlag} se dedica a la publicación de libros del ámbito de las ciencias y a comercializar la editorial Springer en Francia. 
 
 
 \section{Planificación} \label{planificacion}
@@ -255,11 +263,12 @@ En la siguiente página se muestra la planificación temporal del proyecto reali
 	% Lectura y resumen de nuestro artículo
 	\ganttgroup{Estudio del artículo}{22.03.2019}{25.03.2019} \\
 	\ganttbar{Lectura}{22.03.2019}{23.03.2019}\\
-	\ganttbar{Resumen}{23.03.2019}{25.03.2019} \\
+	\ganttbar{Introducción}{23.03.2019}{25.03.2019} \\
 	
 	\ganttgroup{Trabajos previos y posteriores}{24.03.2019}{26.03.2019} \\
 	\ganttbar{Lectura}{24.03.2019}{25.03.2019}\\
 	\ganttbar{Resumen}{25.03.2019}{26.03.2019} \\
+	\ganttbar{Datos complementarios}{25.03.2019}{26.03.2019}\\
  
 	\ganttgroup{Crítica y conclusión}{27.03.2019}{28.03.2019} \\
 	\ganttbar{Revisión crítica}{27.03.2019}{28.03.2019}\\
@@ -272,15 +281,10 @@ En la siguiente página se muestra la planificación temporal del proyecto reali
 	\ganttmilestone{Entrega del proyecto}{31.03.2019}\\ 
 	
 	\ganttlink{elem0}{elem1}
-	\ganttlink{elem2}{elem3}
-	\ganttlink{elem5}{elem6}
-	\ganttlink{elem3}{elem8}
-	\ganttlink{elem3}{elem9}	
-	\ganttlink{elem6}{elem9}
-	\ganttlink{elem9}{elem11}
-	\ganttlink{elem11}{elem12}
-	\ganttlink{elem12}{elem13}
-	
+	\ganttlink{elem1}{elem8}
+	\ganttlink{elem4}{elem8}
+	\ganttlink{elem8}{elem11}
+	\ganttlink{elem11}{elem14}
   \end{ganttchart}
   }
   \vspace*{\stretch{1}}

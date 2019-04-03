@@ -1,0 +1,202 @@
+\documentclass[aspectratio=43]{beamer}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\title{Android botnets for multi targeted attacks}
+\author{Jaime García González y Adán Cano Moreno}
+\institute{Universidad Carlos III de Madrid}
+
+  
+%\usetheme{Madrid}
+%\usetheme{CambridgeUS}
+
+% si quieres que metropolis use una tipografía TrueType (Fira Sans), debes
+% compilar con lualatex
+\usetheme{metropolis}
+
+% descomentar si usas un tema distinto de 'metropolis'
+%\AtBeginSection{
+% \begin{frame}{Contenido}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+\setbeamercovered{transparent}
+
+\begin{document}
+
+\maketitle
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+\section{Información del artículo}
+\begin{frame}{Valentin Hamon}
+  \begin{itemize}
+   \item  Ingeniero de Seguridad informática de Sistemas por la ESIEA.
+  \item En ese momento: Estudiante e investigador en ESIEA. 
+  \item Actualidad:  FAMOCO
+  \item Otros artículos: \emph{Malicious URI Resolving in
+PDFs} (muestra como una petición HTTP desde un PDF puede
+ser una buena herramienta para un atacante)
+  \end{itemize}
+\end{frame}
+\begin{frame}{Springer-Verlag}
+  \begin{itemize}
+   \item  Filial francesa
+de Springer, fundada en 1986.
+  \item Ámbito: medicina, matemáticas, estadística, informática e ingeniería.
+  \item Otras actividades:  publicación de libros del campo de las ciencias y editorial Springer en
+Francia.
+
+  \end{itemize}
+\end{frame}
+\section{Contenido del artículo}
+
+\begin{frame}{Introducción}
+\begin{itemize}
+\item Los dispositivos móviles tienen muchos sensores que son atractivos para
+los atacantes --> acceso a través de las aplicaciones.
+
+\item Prescripción del procedimiento a seguir para realizar un ataque botnet 
+sobre distintos dispositivos móviles Android al mismo tiempo para capturar información. 
+
+\item Objetivo: exponer el potencial que tiene este tipo de ataques y el peligro
+que puede suponer. 
+
+\item Ejemplo de ataque: mostrar la localización de diferentes dispositivos móviles a través de diferentes fases. 
+
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Fases}
+  El artículo divide el procedimiento de ataque en 5 fases:   
+  \begin{itemize}
+  \item Recoger información
+  \item Almacenamiento y gestión de la información
+  \item Mostrar la información
+  \item Información de verificación
+  \item Determinar puntos de encuentro entre dispositivos
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Fases: Recoger información}
+  
+  \begin{itemize}
+  \item Ataque botnet: cualquier grupo de dispositivos infectados y controlados por un atacante de forma remota.  
+  
+  \item Usos: ataques de denegación de servicio distribuidos (DDoS), envío de Spam, minería de Bitcoins y robo de Bitcoins.  
+
+
+ \item Ejemplos: Conficker, Zeus, Waledac, Mariposa y Kelihos. 
+ 
+  \end{itemize}
+  
+  
+\begin{figure}[htbp] 	
+   \includegraphics[width=0.50\textwidth]{figuras/botnet}  
+  \label{botnet}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Fases: Recoger información}
+  
+  \begin{itemize}
+  
+  \item Se necesita que el teléfono esté encendido el mayor tiempo posible.   
+  
+  \item Se necesita una red de bots móvil para enviar datos de geolocalización
+al servidor --> se crea una instancia de nuestra clase de LocationListener al comenzar la actividad principal.
+
+  \item Se genera un protocolo para enviar los datos recogidos en una sola cadena. 
+  
+  \item Es posible transferir datos de dos maneras diferentes
+recogidos de los smartphones a un servidor --> HTTP o SMS.
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fases: Almacenamiento y gestión de la información}
+
+\begin{itemize}
+  
+  \item PHP o MySQL para gestionar la información --> instalados por defectos en la red de servidores mundial.   
+
+  \item Se concatenan todas las variables a almacenar en una única cadena (localización, fecha\ldots). 
+  
+  \item Primera idea para almacenar los datos: crear para cada botnet una nueva tabla con el IMEI (\emph{International Mobile Equipment Identity}) como nombre --> problema cuando intentamos crear una nueva tabla con un número como nombre (no permitido en MySQL).
+  
+  \item Solución: traducimos los números de IMEI en caracteres (0 = a, 1 = b, \ldots).  IMEI es único -->  n tablas con n nombres diferentes.
+
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Fases: Mostrar la información}
+
+\begin{itemize}
+
+\item Incluir el encabezado de una web HTML con algunas líneas para inicializar la API de Google maps.
+
+\item Se inicializa una matriz para tener diferentes colores para nuestros marcadores en el mapa.
+
+\item Consulta SELECT a los IMEIs. Usamos \emph{fecth()} de PHP para acceder a cada línea de la tabla y almacenamos los nombres de tablas en un array para poder hacer consultas en todas las tablas de botnets.
+
+
+	\begin{figure}[htbp] 
+	\begin{flushright} 
+   \includegraphics[width=0.45\textwidth]{figuras/maps}  
+  \label{maps}
+  \end{flushright}
+\end{figure}
+
+
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Fases: Información de verificación}
+
+\begin{itemize}
+\item Determinar el comportamiento de las personas infectadas --> si las víctimas están en un autobús, en un tren, andando o paradas. Tenemos que determinar la velocidad de movimiento de nuestras víctimas.
+
+\item Problema: recopilar suficientes datos para determinar el comportamiento de la víctima.
+
+\item Antes de analizar cualquier comportamiento se debe comprobar los datos. Se crea una nueva tabla con un nombre que es la concatenación de los nombres de las n tablas separados por "\_". 
+
+\item La fecha será un atributo único en la tabla (sólo tenemos una geolocalización entrada de datos en la base de datos por segundo).
+
+
+\end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}{Fases: Información de verificación}
+
+\begin{itemize}
+\item Podemos separar los datos de todas nuestras redes de bots por cualquier período de tiempo.
+
+\item Podemos mostrar en el mapa datos de nuestras redes de bots con respecto a una fecha precisa.
+
+\item Podemos seleccionar y mostrar datos de múltiples objetivos con criterios muy específicos (a través de la fecha.
+\end{itemize}
+  	\begin{figure}[htbp] 
+
+   \includegraphics[width=0.45\textwidth]{figuras/IMEIsConcatenados}  
+  \label{IMEIsConcatenados}
+
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Fases: Determinar puntos de encuentro entre dispositivos}
+  
+\end{frame}
+
+
+
+\maketitle
+
+\end{document}
